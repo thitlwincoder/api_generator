@@ -22,6 +22,8 @@ void main() {
   var presentationPath = '$libPath/presentation';
   var screenPath = '$presentationPath/screens';
 
+  Directory(dataPath).createSync();
+  Directory(clientPath).createSync();
   Directory(providerPath).createSync();
   Directory(repoImplPath).createSync();
   Directory(domainPath).createSync();
