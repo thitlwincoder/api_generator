@@ -4,6 +4,7 @@ import '../../domain/repositories/file_upload_repo.dart';
 import '../clients/file_upload_client.dart';
 import '../repositories//file_upload_repo_impl.dart';
 part 'file_upload_provider.g.dart';
+
 @Riverpod(keepAlive: true)
 FileUploadClient fileUploadClient(Ref ref) {
   return FileUploadClient(ref.watch(dioProvider));
@@ -13,4 +14,3 @@ FileUploadClient fileUploadClient(Ref ref) {
 FileUploadRepo fileUploadRepo(Ref ref) {
   return FileUploadRepoImpl(ref.watch(fileUploadClientProvider));
 }
-

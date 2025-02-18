@@ -4,6 +4,7 @@ import '../../domain/repositories/profile_repo.dart';
 import '../clients/profile_client.dart';
 import '../repositories//profile_repo_impl.dart';
 part 'profile_provider.g.dart';
+
 @Riverpod(keepAlive: true)
 ProfileClient profileClient(Ref ref) {
   return ProfileClient(ref.watch(dioProvider));
@@ -13,4 +14,3 @@ ProfileClient profileClient(Ref ref) {
 ProfileRepo profileRepo(Ref ref) {
   return ProfileRepoImpl(ref.watch(profileClientProvider));
 }
-

@@ -33,6 +33,7 @@ class UsecaseGenerator {
       var method = (e.toBuilder()
             ..update(
               (b) => b
+                ..name = '${b.name}UseCase'
                 ..requiredParameters.add(Parameter(
                   (p) => p
                     ..type = Reference('${className}Repo')

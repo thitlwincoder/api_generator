@@ -8,31 +8,30 @@ import '../../data/models/verify_otp.dart';
 
 import '../repositories/auth_repo.dart';
 
-Future<SignInSuccess> postApiV1AuthSignIn(
+Future<SignInSuccess> postApiV1AuthSignInUseCase(
   AuthRepo repo, {
   required SignIn body,
 }) {
   return repo.postApiV1AuthSignIn(body: body);
 }
 
-Future<RegisterSuccess> postApiV1AuthSignUp(
+Future<RegisterSuccess> postApiV1AuthSignUpUseCase(
   AuthRepo repo, {
   required SignUp body,
 }) {
   return repo.postApiV1AuthSignUp(body: body);
 }
 
-Future<TokenOut> postApiV1AuthVerifyOtp(
+Future<TokenOut> postApiV1AuthVerifyOtpUseCase(
   AuthRepo repo, {
   required VerifyOtp body,
 }) {
   return repo.postApiV1AuthVerifyOtp(body: body);
 }
 
-Future<TokenOut> postApiV1AuthRefreshTokens(
+Future<TokenOut> postApiV1AuthRefreshTokensUseCase(
   AuthRepo repo, {
   required String refreshToken,
 }) {
   return repo.postApiV1AuthRefreshTokens(refreshToken: refreshToken);
 }
-
