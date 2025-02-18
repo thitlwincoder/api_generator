@@ -52,39 +52,31 @@ class ProviderGenerator {
           ? "import 'package:flutter_riverpod/flutter_riverpod.dart';"
           : "import 'package:riverpod/riverpod.dart';",
       "import 'package:riverpod_annotation/riverpod_annotation.dart';",
-      "import '../data/${pathName}_api.dart';",
-      "import '../data/${pathName}_repo_impl.dart';",
-      "import '../data/${pathName}_service.dart';",
-      "import '../data/${pathName}_service_impl.dart';",
-      "import '../domain/${pathName}_repo.dart';",
-      "import '../domain/${pathName}_usecase.dart';"
-          "",
+      "import '../../domain/repositories/${pathName}_repo.dart';",
+      "import '../clients/${pathName}_client.dart';",
+      "import '../repositories//${pathName}_repo_impl.dart';",
+      "",
     ], '\n');
 
     buffer.writeln("part '${pathName}_provider.g.dart';");
 
-    var api = _template(name: 'API', provider: 'dioProvider');
-    buffer.writeln(api);
+//     @Riverpod(keepAlive: true)
+// AuthClient authClient(Ref ref) {
+//   return AuthClient(ref.watch(dioProvider));
+// }
 
-    var service = _template(
-      haveImpl: true,
-      name: 'Service',
-      provider: '${name}APIProvider',
+    var client = _template(
+      name: 'Client',
+      provider: 'dioProvider',
     );
-    buffer.writeln(service);
+    buffer.writeln(client);
 
     var repo = _template(
       haveImpl: true,
       name: 'Repo',
-      provider: '${name}ServiceProvider',
+      provider: '${name}ClientProvider',
     );
     buffer.writeln(repo);
-
-    var usecase = _template(
-      name: 'Usecase',
-      provider: '${name}RepoProvider',
-    );
-    buffer.writeln(usecase);
 
     File(p.join(dir, '${className.toSnakeCase()}_provider.dart'))
       ..createSync()

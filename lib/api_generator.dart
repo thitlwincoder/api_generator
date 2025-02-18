@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:analyzer/dart/analysis/utilities.dart';
 import 'package:analyzer/dart/ast/ast.dart';
+import 'package:api_generator/api_generator/provider_generator.dart';
 import 'package:api_generator/api_generator/repo_generator.dart';
 import 'package:api_generator/api_generator/repo_impl_generator.dart';
 import 'package:api_generator/api_generator/usecase_generator.dart';
@@ -132,82 +133,14 @@ void main() {
           methods: methods,
           className: className,
         ).generate();
+
+        ProviderGenerator(
+          dir: providerPath,
+          className: className,
+        ).generate();
+
+        Process.run('dart', ['format', '.'], runInShell: true);
       }
     }
   }
-
-  // for (var e in list) {
-  // var name = p.basename(e.path);
-  // var fileName = name.split('client').firstOrNull ?? '';
-
-  // var index = fileName.lastIndexOf('_');
-  // fileName = index == -1
-  //     ? fileName
-  //     : fileName.replaceRange(index, fileName.length, '');
-
-  // // var serviceName = '${fileName}_service.dart';
-
-  // if (!name.contains('client.dart')) continue;
-
-  // // var serviceExist =
-  // //     e.parent.listSync().any((e) => e.path.contains(serviceName));
-
-  // // if (serviceExist) continue;
-
-  //     String rootPath;
-  //     String dataPath;
-  //     String domainPath;
-  //     String presentationPath;
-
-  //     var libPath = p.join(e.path.split('lib')[0], 'lib');
-
-  //     dataPath = (Directory(p.join(libPath, 'data'))..createSync()).path;
-  //     domainPath = (Directory(p.join(libPath, 'domain'))..createSync()).path;
-  //     presentationPath =
-  //         (Directory(p.join(libPath, 'presentation'))..createSync()).path;
-  //     File(e.path)
-  //       ..copySync(p.join(dataPath, name))
-  //       ..deleteSync();
-  //     rootPath = e.parent.path;
-
-  // if (!e.parent.path.contains('data')) {
-  //   dataPath = (Directory(p.join(libPath, 'data'))..createSync()).path;
-  //   domainPath =
-  //       (Directory(p.join(libPath, 'domain'))..createSync()).path;
-  //   presentationPath =
-  //       (Directory(p.join(libPath, 'presentation'))..createSync()).path;
-  //   File(e.path)
-  //     ..copySync(p.join(dataPath, name))
-  //     ..deleteSync();
-  //   rootPath = e.parent.path;
-  // } else {
-  //   rootPath = e.parent.parent.path;
-  //   dataPath = (Directory(p.join(rootPath, 'data'))..createSync()).path;
-  //   domainPath =
-  //       (Directory(p.join(rootPath, 'domain'))..createSync()).path;
-  //   presentationPath =
-  //       (Directory(p.join(rootPath, 'presentation'))..createSync()).path;
-  // }
-
-  // ServiceGenerator(
-  //   dir: dataPath,
-  //   docs: imports,
-  //   methods: methods,
-  //   className: className,
-  // ).generate();
-
-  // ServiceImplGenerator(
-  //   dir: dataPath,
-  //   docs: imports,
-  //   methods: methods,
-  //   className: className,
-  // ).generate();
-
-  // ProviderGenerator(
-  //   dir: presentationPath,
-  //   className: className,
-  // ).generate();
-  // }
-  // }
-  // }
 }
