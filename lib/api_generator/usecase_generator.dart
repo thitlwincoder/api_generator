@@ -48,7 +48,9 @@ class UsecaseGenerator {
             ))
           .build();
 
-      var code = DartFormatter().format('${method.accept(emitter)}');
+      var code =
+          DartFormatter(languageVersion: DartFormatter.latestLanguageVersion)
+              .format('${method.accept(emitter)}');
       buffer.writeln(code);
     }
 

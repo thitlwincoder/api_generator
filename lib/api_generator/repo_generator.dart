@@ -28,7 +28,9 @@ class RepoGenerator {
     );
 
     final emitter = DartEmitter();
-    var code = DartFormatter().format('${obj.accept(emitter)}');
+    var code =
+        DartFormatter(languageVersion: DartFormatter.latestLanguageVersion)
+            .format('${obj.accept(emitter)}');
 
     File(p.join(dir, '${className.toSnakeCase()}_repo.dart'))
       ..createSync()

@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import '../../data/models/category_out.dart';
 import '../../domain/repositories/category_repo.dart';
 import '../clients/category_client.dart';

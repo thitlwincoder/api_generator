@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import '../../data/models/category_out.dart';
 
 abstract class CategoryRepo {

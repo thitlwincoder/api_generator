@@ -55,7 +55,9 @@ class ServiceImplGenerator {
     );
 
     final emitter = DartEmitter();
-    var code = DartFormatter().format('${obj.accept(emitter)}');
+    var code =
+        DartFormatter(languageVersion: DartFormatter.latestLanguageVersion)
+            .format('${obj.accept(emitter)}');
 
     File(p.join(dir, '${className.toSnakeCase()}_service_impl.dart'))
       ..createSync()

@@ -36,7 +36,8 @@ class ProviderGenerator {
     );
 
     final emitter = DartEmitter();
-    return DartFormatter().format('${obj.accept(emitter)}');
+    return DartFormatter(languageVersion: DartFormatter.latestLanguageVersion)
+        .format('${obj.accept(emitter)}');
   }
 
   void generate() {
