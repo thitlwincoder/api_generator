@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import '../../data/models/paginated_response_product_info_out.dart';
 import '../../data/models/product_in.dart';
 import '../../data/models/product_info_out.dart';

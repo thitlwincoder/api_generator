@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import '../../data/models/order_in.dart';
 import '../../data/models/order_out.dart';
 import '../../domain/repositories/order_repo.dart';
@@ -24,6 +25,8 @@ class OrderRepoImpl implements OrderRepo {
     required String status,
   }) {
     return client.patchApiV1OrderOrderIdStatus(
-        orderId: orderId, status: status);
+      orderId: orderId,
+      status: status,
+    );
   }
 }

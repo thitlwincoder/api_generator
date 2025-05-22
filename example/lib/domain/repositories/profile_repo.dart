@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import '../../data/models/profile_in.dart';
 import '../../data/models/profile_out.dart';
 

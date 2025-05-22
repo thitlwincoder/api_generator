@@ -18,5 +18,7 @@ abstract class CategoryClient {
   /// Get all categories.
 
   @GET('/api/v1/categories/')
-  Future<List<CategoryOut>> getApiV1Categories();
+  Future<List<CategoryOut>> getApiV1Categories({
+    @SendProgress() required ProgressCallback onSendProgress,
+  });
 }

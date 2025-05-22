@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import '../../data/models/paginated_response_review_out.dart';
 import '../../data/models/rating_bar_info.dart';
 import '../../data/models/review_in.dart';

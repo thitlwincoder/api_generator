@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import '../../data/models/paginated_response_review_out.dart';
 import '../../data/models/rating_bar_info.dart';
 import '../../data/models/review_in.dart';
@@ -17,7 +18,10 @@ class ReviewRepoImpl implements ReviewRepo {
     int offset = 0,
   }) {
     return client.getApiV1Review(
-        productId: productId, limit: limit, offset: offset);
+      productId: productId,
+      limit: limit,
+      offset: offset,
+    );
   }
 
   @override

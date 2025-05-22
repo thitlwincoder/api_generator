@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import '../../data/models/register_success.dart';
 import '../../data/models/sign_in.dart';
 import '../../data/models/sign_in_success.dart';

@@ -30,5 +30,6 @@ abstract class FileUploadClient {
   @POST('/api/v1/file/upload')
   Future<FileUploadOut> postApiV1FileUpload({
     @Part(name: 'file') required File file,
+    @SendProgress() required ProgressCallback onSendProgress,
   });
 }

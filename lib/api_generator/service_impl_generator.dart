@@ -12,8 +12,8 @@ class ServiceImplGenerator {
     required this.dir,
   });
 
-  final String className;
   final String dir;
+  final String className;
   final List<String> docs;
   final List<Method> methods;
 

@@ -29,22 +29,28 @@ class UsecaseGenerator {
     ].join('\n'));
     final emitter = DartEmitter();
 
+    var repoParam = Parameter(
+      (p) => p
+        ..type = Reference('${className}Repo')
+        ..required = true
+        ..named = true
+        ..name = 'repo',
+    );
+
     for (var e in methods) {
       var method = (e.toBuilder()
             ..update(
-              (b) => b
-                ..name = '${b.name}UseCase'
-                ..requiredParameters.add(Parameter(
-                  (p) => p
-                    ..type = Reference('${className}Repo')
-                    ..name = 'repo',
-                ))
-                ..body = Code(
-                  'return repo.${e.name}(${[
-                    ...e.requiredParameters.map((e) => e.name),
-                    ...e.optionalParameters.map((e) => '${e.name}:${e.name}')
-                  ].join(',')});',
-                ),
+              (b) {
+                b
+                  ..name = '${b.name}UseCase'
+                  ..optionalParameters.add(repoParam)
+                  ..body = Code(
+                    'return repo.${e.name}(${[
+                      ...e.requiredParameters.map((e) => e.name),
+                      ...e.optionalParameters.map((e) => '${e.name}:${e.name}')
+                    ].join(',')});',
+                  );
+              },
             ))
           .build();
 
